@@ -1,16 +1,18 @@
 import sys
-
 import pandas as pd
 import boto3
 import datetime
 import io
 from bs4 import BeautifulSoup
 
+
 s3 = boto3.client('s3')
 date = datetime.date.today()
 bucket_name = 'bucket-raw-html'
 
 
+# Función que se encarga de recibir la url de un html
+# y devuelve un parseo con el contenido del documento
 def leer_pagina(url):
     return BeautifulSoup(url, "html.parser")
 
