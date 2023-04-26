@@ -1,0 +1,42 @@
+{
+  "name" : "web_sc_toRDS",
+  "description" : "",
+  "role" : "arn:aws:iam::352003767904:role/LabRole",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-352003767904-us-east-1/scripts/web_sc_toRDS.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-352003767904-us-east-1/sparkHistoryLogs/",
+    "--enable-job-insights" : "true",
+    "--enable-glue-datacatalog" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-bookmark-option" : "job-bookmark-enable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-352003767904-us-east-1/temporary/"
+  },
+  "connections" : {
+    "connections" : [ "conexion1" ]
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 10,
+  "timeout" : 2880,
+  "maxCapacity" : 10.0,
+  "glueVersion" : "3.0",
+  "numberOfWorkers" : 10,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "codeGenConfigurationNodes" : "{\"node-1\":{\"CatalogSource\":{\"Database\":\"web_sc\",\"Name\":\"Data Catalog table\",\"Table\":\"final\"}},\"node-2\":{\"ApplyMapping\":{\"Inputs\":[\"node-1\"],\"Mapping\":[{\"Dropped\":false,\"FromPath\":[\"col0\"],\"FromType\":\"string\",\"ToKey\":\"col0\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"col1\"],\"FromType\":\"string\",\"ToKey\":\"col1\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"col2\"],\"FromType\":\"string\",\"ToKey\":\"col2\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"periodico\"],\"FromType\":\"string\",\"ToKey\":\"periodico\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"year\"],\"FromType\":\"string\",\"ToKey\":\"year\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"month\"],\"FromType\":\"string\",\"ToKey\":\"month\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"day\"],\"FromType\":\"string\",\"ToKey\":\"day\",\"ToType\":\"string\"}],\"Name\":\"ApplyMapping\"}},\"node-3\":{\"MySQLCatalogTarget\":{\"Database\":\"web_sc_mysql\",\"Inputs\":[\"node-2\"],\"Name\":\"MySQL table\",\"Table\":\"web_sc_final\"}}}",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "AWS_ETL_Jobs",
+    "branch" : "main",
+    "folder" : "web_sc_toRDS"
+  }
+}
