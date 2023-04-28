@@ -39,3 +39,11 @@ jobs:
       - name: Instalacion de dependencias necesarias en Python
         run: |
           pip install -r requeriments.txt
+          
+      - name: Pruebas unitarias 
+        run: |
+          cd web_sc_html/
+          pwd
+          pytest
+          cd ..
+          pwd
