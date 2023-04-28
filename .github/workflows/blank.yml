@@ -48,7 +48,7 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
           
-      - name: Pruebas unitarias y estilo
+      - name: Pruebas unitarias y estilo (Job1)
         run: |
           source env/bin/activate
           cd web_sc_html/
@@ -58,3 +58,13 @@ jobs:
           cd ..
           pwd
           
+      - name: Pruebas unitarias y estilo (Job2)
+        run: |
+          source env/bin/activate
+          cd web_sc_htmlToCSV/
+          flake8 test_web_sc_toCSV.py
+          flake8 web_sc_htmlToCSV.py
+          cd ..
+          pwd
+        
+      
