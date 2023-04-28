@@ -64,5 +64,11 @@ jobs:
           flake8 web_sc_htmlToCSV.py
           cd ..
           pwd
+          
+      - name: Actualizacion de scripts en S3
+        run: |
+          source env/bin/activate
+          aws s3 cp web_sc_html/web_sc_html.py s3://aws-glue-assets-352003767904-us-east-1/scripts/web_sc_html.py
+          aws s3 cp web_sc_htmlToCSV/web_sc_htmlToCSV.py s3://aws-glue-assets-352003767904-us-east-1/scripts/web_sc_htmlToCSV.py
         
       
