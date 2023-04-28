@@ -48,10 +48,13 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
           
-      - name: Pruebas unitarias 
+      - name: Pruebas unitarias y estilo
         run: |
+          source env/bin/activate
           cd web_sc_html/
-          pwd
+          flake8 test_web_sc.py
+          flake8 web_sc_html.py
           pytest
           cd ..
           pwd
+          
