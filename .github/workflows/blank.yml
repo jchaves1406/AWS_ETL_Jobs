@@ -50,7 +50,6 @@ jobs:
           
       - name: Pruebas unitarias y estilo (Job1)
         run: |
-          source env/bin/activate
           cd web_sc_html/
           flake8 test_web_sc.py
           flake8 web_sc_html.py
@@ -60,7 +59,6 @@ jobs:
           
       - name: Pruebas unitarias y estilo (Job2)
         run: |
-          source env/bin/activate
           cd web_sc_htmlToCSV/
           flake8 test_web_sc_toCSV.py
           flake8 web_sc_htmlToCSV.py
