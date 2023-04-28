@@ -32,7 +32,6 @@
   "numberOfWorkers" : 2,
   "workerType" : "G.1X",
   "executionClass" : "STANDARD",
-  "codeGenConfigurationNodes" : "{\"node-1\":{\"CatalogSource\":{\"Database\":\"noticias_s3\",\"Name\":\"Data Catalog table\",\"Table\":\"final\"}},\"node-2\":{\"ApplyMapping\":{\"Inputs\":[\"node-1\"],\"Mapping\":[{\"Dropped\":false,\"FromPath\":[\"col0\"],\"FromType\":\"string\",\"ToKey\":\"col0\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"col1\"],\"FromType\":\"string\",\"ToKey\":\"col1\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"col2\"],\"FromType\":\"string\",\"ToKey\":\"col2\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"periodico\"],\"FromType\":\"string\",\"ToKey\":\"periodico\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"year\"],\"FromType\":\"string\",\"ToKey\":\"year\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"month\"],\"FromType\":\"string\",\"ToKey\":\"month\",\"ToType\":\"string\"},{\"Dropped\":false,\"FromPath\":[\"day\"],\"FromType\":\"string\",\"ToKey\":\"day\",\"ToType\":\"string\"}],\"Name\":\"ApplyMapping\"}},\"node-3\":{\"CatalogTarget\":{\"Database\":\"noticias_rds\",\"Inputs\":[\"node-2\"],\"Name\":\"Data Catalog table\",\"Table\":\"web_sc_final\"}}}",
   "sourceControlDetails" : {
     "provider" : "GITHUB",
     "repository" : "AWS_ETL_Jobs",
