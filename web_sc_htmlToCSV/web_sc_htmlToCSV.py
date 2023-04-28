@@ -1,10 +1,9 @@
-import sys
-import pandas as pd
-import boto3
 import datetime
 import io
-from bs4 import BeautifulSoup
 
+import boto3
+import pandas as pd
+from bs4 import BeautifulSoup
 
 s3 = boto3.client('s3')
 date = datetime.date.today()
@@ -34,7 +33,8 @@ def extraer_atributos_publimetro(bloques):
         categoria = str(bloque.find('a')['href']).split('/')[1].capitalize()
         titulo = bloque.find(
             'h2', {
-                'class': 'primary-font__PrimaryFontStyles-o56yd5-0 ctbcAa headline-text'}
+                'class': 'primary-font__PrimaryFontStyles-o56yd5-0 ctbcAa \
+                    headline-text'}
         ).text.strip()
         link = 'https://www.publimetro.co' + bloque.find('a')['href']
 
@@ -85,7 +85,8 @@ def obtener_contenido():
 # del periodico para almecenarlo en la ruta seleccionada
 def guardar_contenido(df, periodico):
     file_csv_eltiempo = 'contenido-' + str(date) + '.csv'
-    key = f'headlines/final/periodico={periodico}/year={date.year}/month={date.month}/day={date.day}/{file_csv_eltiempo}'
+    key = f'headlines/final/periodico={periodico}/year={date.year}/month=\
+        {date.month}/day={date.day}/{file_csv_eltiempo}'
     csv_buffer = io.StringIO()
     df.to_csv(csv_buffer, index=False, sep=';', header=False)
     csv_buffer.seek(0)
